@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang="en">
+<head>
+  <TITLE>js oscilloscope</TITLE>
+</head>
+
+<body>
+
+<H1>oscilloscope paint tool</H1>
+<TD VALIGN="top">
+<DIV ID="newsContent">
+<h3>static version of <a href="https://neil.fraser.name/news/2018/01/25/">Neil Fraser's JS Oscilloscope</a>.</h3>
+<P>
+Plug your computer's audio output into an oscilloscope (right = X, left = Y). You want to use the XY timebase mode, AKA the <a href="https://www.rigol-uk.co.uk/x-y-display-mode-on-scopes-additional-features-with-rigol-ds1000z-series-oscilloscope-ds1074-ds1074z-s-ds1104z-ds1104z-s/">Lissajous mode</a>.</P>
+
+<p>Use your mouse to draw in the square below:</p>
+
+<p><canvas height=256 width=256 id="canvas" style="border: 1px solid #000; cursor: crosshair"></canvas></p>
+<audio id="audio"></audio>
+
+<p>No oscilloscope?  Here's a video.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JGEsZBPkjNY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>This is all done with about a hundred lines of JavaScript (view source to see it).
+The mouse's X-Y movements are recorded, then encoded as the right-left channels of
+a dynamically generated WAV file.  This file is URI-encoded and played.  Pretty straight-forward.</p>
+
+<p>Also fun is this <a href="/news/2018/clock.html">analog clock</a> that displays the current time on your oscilloscope.</p>
+
+</body>
+<script type="text/javascript" src="main.js"></script>
+</html>
