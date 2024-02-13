@@ -7,6 +7,7 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 ctx.strokeStyle = '#080';
 ctx.lineWidth = 2;
+var audio = document.getElementById('audio');
 
 canvas.addEventListener('mousemove', mousemove, false);
 canvas.addEventListener('mousedown', mousedown, false);
@@ -54,11 +55,6 @@ function mousemove(e) {
 }
 
 function mousedown(e) {
-  // Erase.
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  xData.length = 0;
-  yData.length = 0;
-
   // Initialize new drawing path.
   prevX = currX;
   prevY = currY;
@@ -74,10 +70,18 @@ function mouseup(e) {
   if (isDown) {
     isDown = false;
     ctx.closePath();
-    if (xData.length > 1) {
-      play();
-    }
   }
+}
+
+function stopAudio(e) {
+  audio.pause();
+}
+
+function erase(e) {
+    // Erase.
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  xData.length = 0;
+  yData.length = 0;
 }
 
 function repeatArray(array, n) {
@@ -92,14 +96,15 @@ function repeatArray(array, n) {
 
 function play() {
   // Generate about 10 seconds worth of data.
-  var length = 300000;
-  var left = repeatArray(yData, length);
-  var right = repeatArray(xData, length);
-  // Play the sound.
-  var wav = makeWav(left, right);
-  var audio = document.getElementById('audio');
-  audio.src = 'data:audio/x-wav;base64,' + btoa(wav);
-  audio.play();
+  if (xData.length > 1){
+    var length = 1000000;
+    var left = repeatArray(yData, length);
+    var right = repeatArray(xData, length);
+    // Play the sound.
+    var wav = makeWav(left, right);
+    audio.src = 'data:audio/x-wav;base64,' + btoa(wav);
+    audio.play();
+  }
 }
 
 function makeWav(left, right) {

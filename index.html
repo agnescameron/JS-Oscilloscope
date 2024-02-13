@@ -18,14 +18,9 @@ Plug your computer's audio output into an oscilloscope (right = X, left = Y). Yo
 <p><canvas height=256 width=256 id="canvas" style="border: 1px solid #000; cursor: crosshair"></canvas></p>
 <audio id="audio"></audio>
 
-<p>No oscilloscope?  Here's a video.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JGEsZBPkjNY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-<p>This is all done with about a hundred lines of JavaScript (view source to see it).
-The mouse's X-Y movements are recorded, then encoded as the right-left channels of
-a dynamically generated WAV file.  This file is URI-encoded and played.  Pretty straight-forward.</p>
-
-<p>Also fun is this <a href="/news/2018/clock.html">analog clock</a> that displays the current time on your oscilloscope.</p>
+<button onClick='play()'>play!</button>
+<button onClick='stopAudio()'>stop!</button>
+<button onClick='erase()'>erase!</button>
 
 </body>
 <script type="text/javascript" src="main.js"></script>
